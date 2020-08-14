@@ -27,6 +27,7 @@
     "axios": "^0.19.2",
     "lint-staged": "^10.0.7",
     "prettier": "^1.19.1",
+    "rc-queue-anim": "^1.8.5",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "umi": "^3.2.14",
