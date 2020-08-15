@@ -5,15 +5,12 @@ import styles from './index.less';
 function Search() {
   return (
     <>
-      <AutoComplete
-        className={styles.lmSearch}
-        placeholder="input here"
-      />
+      <AutoComplete className={styles.lmSearch} placeholder="input here" />
       <Button className={styles.lmBtn} type="primary" icon={<SearchOutlined />}>
         搜索
       </Button>
     </>
-  )
+  );
 }
 
-export default Search
+export default Search;

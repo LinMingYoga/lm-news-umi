@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Card } from 'antd';
+import { Card, BackTop } from 'antd';
 import './index.less';
 import QueueAnim from 'rc-queue-anim';
 import $http from '@/api';
@@ -42,6 +42,16 @@ function HomePage() {
       </Card>
     );
   });
+  const style = {
+    height: 40,
+    width: 40,
+    lineHeight: '40px',
+    borderRadius: 4,
+    backgroundColor: '#1088e9',
+    color: '#fff',
+    textAlign: 'center',
+    fontSize: 14,
+  };
   return (
     <>
       {/* <div className={}>
@@ -65,6 +75,9 @@ function HomePage() {
         >
           {Cards}
         </QueueAnim>
+        <BackTop>
+          <div style={style}>UP</div>
+        </BackTop>
       </div>
     </>
   );
