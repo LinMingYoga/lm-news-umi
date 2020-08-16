@@ -1,44 +1,75 @@
-.site-card-wrapper {
-  padding-right: 26px;
-  padding-left: 10px;
-  columns: 4;
-  column-gap: 30;
-  .ant-list {
-    width: 100%;
+.lm-news {
+  box-sizing: border-box;
+  .lm-news-native {
+    box-sizing: border-box;
+    color: #fff;
+    padding: 0 10px;
+    display: flex;
+    justify-content: center;
+    // margin: 10px 0;
+    ul {
+      display: flex;
+      flex-wrap: wrap;
+      margin: 0;
+      padding: 0;
+      li {
+        cursor: pointer;
+        list-style: none;
+        width: 100px;
+        padding: 10px 0;
+        background-color: #ccc;
+        margin-right: 10px;
+        margin-bottom: 10px;
+        text-align: center;
+      }
+      .active {
+        color: #333;
+        background-color: skyblue;
+      }
+    }
   }
-  .ant-card {
-    width: 100%;
-    margin: 0 0 20px;
-    overflow: hidden;
-    break-inside: avoid;
-    .ant-card-body {
-      padding: 10px;
-      h3 {
-        padding-top: 10px;
-        a {
-          color: #333;
-          font-weight: 600;
+  .site-card-wrapper {
+    padding-right: 26px;
+    padding-left: 10px;
+    columns: 4;
+    column-gap: 30;
+    .ant-list {
+      width: 100%;
+    }
+    .ant-card {
+      width: 100%;
+      margin: 0 0 20px;
+      overflow: hidden;
+      break-inside: avoid;
+      .ant-card-body {
+        padding: 10px;
+        h3 {
+          padding-top: 10px;
+          a {
+            color: #333;
+            font-weight: 600;
+          }
         }
       }
     }
   }
-}
 
-@media (max-width: 1200px) {
-  .site-card-wrapper {
-    columns: 3;
-    width: calc(100% -40px);
-    box-sizing: border-box;
+  @media (max-width: 1200px) {
+    .site-card-wrapper {
+      columns: 3;
+      width: calc(100% -40px);
+      box-sizing: border-box;
+    }
   }
-}
 
-@media (max-width: 768px) {
-  .site-card-wrapper {
-    columns: 2;
+  @media (max-width: 768px) {
+    .site-card-wrapper {
+      columns: 2;
+    }
   }
-}
-@media (max-width: 480px) {
-  .site-card-wrapper {
-    columns: 1;
+  @media (max-width: 480px) {
+    .site-card-wrapper {
+      columns: 1;
+    }
   }
 }

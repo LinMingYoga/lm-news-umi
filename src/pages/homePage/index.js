@@ -25,6 +25,12 @@ function HomePage() {
     return String.fromCharCode(num + 65);
   }
 
+  function toggle(index) {
+    console.log('index', index);
+    active = index;
+    console.log('active', active);
+  }
+
   let Cards = data.map((item, index) => {
     return (
       <Card hoverable key={filteKey(index)}>
@@ -42,6 +48,67 @@ function HomePage() {
       </Card>
     );
   });
+  const items = [
+    {
+      label: '新闻',
+      value: 'news',
+    },
+    {
+      label: '国内',
+      value: 'china',
+    },
+    {
+      label: '国际',
+      value: 'world',
+    },
+    {
+      label: '社会',
+      value: 'society',
+    },
+    {
+      label: '法治',
+      value: 'law',
+    },
+    {
+      label: '文娱',
+      value: 'ent',
+    },
+    {
+      label: '科技',
+      value: 'tech',
+    },
+    {
+      label: '生活',
+      value: 'life',
+    },
+    {
+      label: '经济',
+      value: 'economy',
+    },
+    {
+      label: '教育',
+      value: 'edu',
+    },
+    {
+      label: '健康',
+      value: 'health',
+    },
+  ];
+  var active = 0;
+  const tabs = items.map((item, index) => {
+    return (
+      <li
+        className={index === active ? 'active' : ''}
+        onClick={() => {
+          toggle(index);
+        }}
+        value={item.value}
+        key={index}
+      >
+        {item.label}
+      </li>
+    );
+  });
   const style = {
     height: 40,
     width: 40,
@@ -54,30 +121,27 @@ function HomePage() {
   };
   return (
     <>
-      {/* <div className={}>
-        <ul>
-          <li>1</li>
-          <li>2</li>
-          <li>3</li>
-          <li>4</li>
-          <li>5</li>
-          <li>6</li>
-          <li>7</li>
-        </ul>
-      </div> */}
-      <div className="site-card-wrapper">
-        <QueueAnim
-          component="Card"
-          animConfig={[{ opacity: [1, 0], translateY: [0, 30] }, { height: 0 }]}
-          ease={['easeOutQuart', 'easeInOutQuart']}
-          duration={[550, 450]}
-          interval={150}
-        >
-          {Cards}
-        </QueueAnim>
-        <BackTop>
-          <div style={style}>UP</div>
-        </BackTop>
+      <div className="lm-news">
+        <div className="lm-news-native">
+          <ul>{tabs}</ul>
+        </div>
+        <div className="site-card-wrapper">
+          <QueueAnim
+            component="Card"
+            animConfig={[
+              { opacity: [1, 0], translateY: [0, 30] },
+              { height: 0 },
+            ]}
+            ease={['easeOutQuart', 'easeInOutQuart']}
+            duration={[550, 450]}
+            interval={150}
+          >
+            {Cards}
+          </QueueAnim>
+          <BackTop>
+            <div style={style}>UP</div>
+          </BackTop>
+        </div>
       </div>
     </>
   );
