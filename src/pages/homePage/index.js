@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Card, BackTop } from 'antd';
+import { Card, BackTop, Spin } from 'antd';
 import './index.less';
 import QueueAnim from 'rc-queue-anim';
 import $http from '@/api';
@@ -8,12 +8,15 @@ import $http from '@/api';
 
 function HomePage() {
   const [data, setData] = useState([]);
+  const [active, setActive] = useState(0)
+  const [state, setState] = useState(false)
 
   function getNews(keyword) {
     setData([]);
     $http.getNews(keyword).then(res => {
       let data = res.data.list;
       setData(data);
+      setState(false)
     });
   }
 
@@ -25,15 +28,9 @@ function HomePage() {
     return String.fromCharCode(num + 65);
   }
 
-  function toggle(index) {
-    console.log('index', index);
-    active = index;
-    console.log('active', active);
-  }
-
-  let Cards = data.map((item, index) => {
+  let NewsCards = data.map((item, index) => {
     return (
-      <Card hoverable key={filteKey(index)}>
+      <Card hoverable key={index}>
         <div>
           <img
             style={{ display: 'block', width: '100%' }}
@@ -46,8 +43,8 @@ function HomePage() {
         </h3>
         <p>{item.brief}</p>
       </Card>
-    );
-  });
+    )
+    });
   const items = [
     {
       label: '新闻',
@@ -94,13 +91,23 @@ function HomePage() {
       value: 'health',
     },
   ];
-  var active = 0;
+  var timeout = null
+  function toggle(index, value) {
+    setState(true)
+    clearTimeout(timeout)
+    console.log('value', value)
+    timeout = setTimeout(() => {
+      setActive(index)
+      getNews(value)
+      console.log('active', active)
+    }, 1000);
+  }
   const tabs = items.map((item, index) => {
     return (
       <li
-        className={index === active ? 'active' : ''}
+        className = { active === index ? 'active' : ''}
         onClick={() => {
-          toggle(index);
+          toggle(index, item.value);
         }}
         value={item.value}
         key={index}
@@ -125,7 +132,6 @@ function HomePage() {
         <div className="lm-news-native">
           <ul>{tabs}</ul>
         </div>
-        <div className="site-card-wrapper">
           <QueueAnim
             component="Card"
             animConfig={[
@@ -136,12 +142,15 @@ function HomePage() {
             duration={[550, 450]}
             interval={150}
           >
-            {Cards}
-          </QueueAnim>
-          <BackTop>
-            <div style={style}>UP</div>
-          </BackTop>
-        </div>
+            <div className="site-card-wrapper">
+              {
+                NewsCards
+              }
+            </div>
+            </QueueAnim>
+            <BackTop>
+              <div style={style}>UP</div>
+            </BackTop>
       </div>
     </>
   );

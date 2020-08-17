@@ -7,15 +7,15 @@ const { Header, Footer, Content } = Layout;
 function LayOut(props) {
   return (
     <Layout className={styles.lmPage}>
+      <Scrollbars>
       <Header className={styles.lmHeader}>
         <Search />
       </Header>
-      <Scrollbars>
         <Content className={styles.content}>
           <div className={styles.w}>{props.children}</div>
         </Content>
-      </Scrollbars>
       {/* <Footer>Footer</Footer> */}
+      </Scrollbars>
     </Layout>
   );
 }

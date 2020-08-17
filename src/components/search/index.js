@@ -5,7 +5,7 @@ import styles from './index.less';
 function Search() {
   return (
     <>
-      <AutoComplete className={styles.lmSearch} placeholder="input here" />
+      <AutoComplete className={styles.lmSearch} placeholder="百度云一下，你就知道！" />
       <Button className={styles.lmBtn} type="primary" icon={<SearchOutlined />}>
         搜索
       </Button>
