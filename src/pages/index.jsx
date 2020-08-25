@@ -1,11 +1,12 @@
 import React from 'react';
 import '@/assets/styles/index.less';
-import MyPage from '@/layout/index';
+import Layout from '@/layout'
+import './index.less';
 
 export default () => {
   return (
-    <div>
-      <MyPage />
+    <div className="lm-app">
+      <Layout />
     </div>
   );
 };

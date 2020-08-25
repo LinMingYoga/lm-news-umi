@@ -1,25 +1,28 @@
 .lm-news {
   box-sizing: border-box;
+  width: 100%;
+  height: 100%;
   .lm-news-native {
+    background-color: rgba(0,0,0, .5);
     box-sizing: border-box;
     color: #fff;
-    padding: 0 10px;
     display: flex;
     justify-content: center;
-    // margin: 10px 0;
+    padding: 10px 0;
     ul {
       display: flex;
       flex-wrap: wrap;
+      align-items: center;
       margin: 0;
       padding: 0;
+      justify-content: center;
       li {
         cursor: pointer;
         list-style: none;
-        width: 100px;
+        width: 80px;
         padding: 10px 0;
         background-color: #ccc;
         margin-right: 10px;
-        margin-bottom: 10px;
         text-align: center;
       }
       .active {
@@ -36,11 +39,12 @@
     .ant-list {
       width: 100%;
     }
-    .ant-card {
+    .lm-card-item {
       width: 100%;
       margin: 0 0 20px;
       overflow: hidden;
       break-inside: avoid;
+      padding: 5px 10px;
       .ant-card-body {
         padding: 10px;
         h3 {
@@ -60,16 +64,31 @@
       width: calc(100% -40px);
       box-sizing: border-box;
     }
+    .lm-news-native {
+      ul>li {
+        margin-bottom: 0;
+      }
+    }
   }
 
   @media (max-width: 768px) {
     .site-card-wrapper {
       columns: 2;
     }
+    .lm-news-native {
+      ul > li {
+        margin-bottom: 10px;
+      }
+    }
   }
   @media (max-width: 480px) {
     .site-card-wrapper {
       columns: 1;
+    }
+    .lm-news-native {
+      ul>li {
+        margin-bottom: 10px;
+      }
     }
   }
 }
