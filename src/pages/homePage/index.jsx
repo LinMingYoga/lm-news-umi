@@ -98,7 +98,7 @@ function HomePage() {
     }, 1000);
   };
   const getNews = keyword => {
-    setData([]);
+    // setData([]);
     $http.getNews(keyword).then(res => {
       let data = res.data.list;
       setData(data);

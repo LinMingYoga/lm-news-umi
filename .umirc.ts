@@ -1,6 +1,7 @@
 import { defineConfig } from 'umi';
 
 export default defineConfig({
+  title: '小鸣导航',
   nodeModulesTransform: {
     type: 'none',
   },
