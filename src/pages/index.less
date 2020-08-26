@@ -1,25 +1,23 @@
+/* 设置滚动条的样式 */
+::-webkit-scrollbar {
+  cursor: pointer;
+  width: 8px;
+}
 
-// .title {
-//   background: rgb(121, 242, 157);
-// }
-// .page {
-//   width: 100%;
-//   height: 100vh;
-// }
+/* 滚动槽 */
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset006pxrgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+}
 
-// .content {
-//   width: 100%;
-//   height: calc(100vh - 64px);
-// }
-// .lmHeader {
-//   display: flex;
-//   justify-content: center;
-// }
-.lm-app {
-  width: 100%;
-  height: 100vh;
-  background-color: blue;
-  // background: url(../assets/images/bg.jpg) no-repeat center;
-  // background-attachment:fixed;
-  // background-size: cover;
+/* 滚动条滑块 */
+::-webkit-scrollbar-thumb {
+  cursor: pointer;
+  border-radius: 0px;
+  background: #001529;
+  -webkit-box-shadow: inset006pxrgba(0, 0, 0, 0.5);
+}
+
+::-webkit-scrollbar-thumb:window-inactive {
+  background: #cccc;
 }

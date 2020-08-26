@@ -1,14 +1,16 @@
-import React, { useEffect, useState  } from 'react';
-import { Card, Affix } from 'antd';
+import React, { useEffect, useState } from 'react';
+import { Card, Affix, Image } from 'antd';
 import './index.less';
 import QueueAnim from 'rc-queue-anim';
 import $http from '@/api';
+import failImage from '@/assets/images/fail.png';
 
 function HomePage() {
   const [data, setData] = useState([]);
-  const [active, setActive] = useState(0)
-  const [state, setState] = useState(false)
-  const [top, setTop] = useState(20);
+  const [active, setActive] = useState(0);
+  const [state, setState] = useState(false);
+  const [top, setTop] = useState(0);
+  const [bgc, setBgc] = useState(false);
 
   const items = [
     {
@@ -60,7 +62,7 @@ function HomePage() {
     return (
       <li
         className="lm-topItem"
-        className = { active === index ? 'active' : ''}
+        className={active === index ? 'active' : ''}
         onClick={() => {
           toggle(index, item.value);
         }}
@@ -83,35 +85,39 @@ function HomePage() {
   };
   const filteKey = num => {
     return String.fromCharCode(num + 65);
-  }
-  var timeout = null
+  };
+  var timeout = null;
   const toggle = (index, value) => {
-    setState(true)
-    clearTimeout(timeout)
-    console.log('value', value)
+    setState(true);
+    clearTimeout(timeout);
+    console.log('value', value);
     timeout = setTimeout(() => {
-      setActive(index)
-      getNews(value)
-      console.log('active', active)
+      setActive(index);
+      getNews(value);
+      console.log('active', active);
     }, 1000);
-  }
+  };
   const getNews = keyword => {
     setData([]);
     $http.getNews(keyword).then(res => {
       let data = res.data.list;
       setData(data);
-      setState(false)
+      setState(false);
     });
-  }
+  };
+  const affixChange = affixed => {
+    console.log('affixed', affixed);
+    affixed ? setBgc(true) : setBgc(false);
+  };
 
   useEffect(() => {
     getNews('news');
   }, []);
   return (
-    <>
+    <div className="w">
       <div className="lm-news">
-        <Affix offsetTop={top}>
-          <div className="lm-news-native">
+        <Affix offsetTop={top} onChange={affixChange}>
+          <div className={`${bgc ? 'lm-active' : ''} lm-news-native`}>
             <ul>{tabs}</ul>
           </div>
         </Affix>
@@ -129,10 +135,11 @@ function HomePage() {
                   hoverable="true"
                   key={index}
                   cover={
-                    <img
+                    <Image
                       style={{ display: 'block', width: '100%' }}
                       alt={item.title}
                       src={item.image}
+                      fallback={failImage}
                     />
                   }
                 >
@@ -146,7 +153,7 @@ function HomePage() {
           </div>
         </QueueAnim>
       </div>
-    </>
+    </div>
   );
 }
 

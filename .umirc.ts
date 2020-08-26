@@ -7,10 +7,8 @@ export default defineConfig({
   routes: [
     {
       path: '/',
-      component: '@/layout/index',
-      routes: [
-        { path: '/', component: '@/pages/homePage' }
-      ],
+      component: '@/pages/index',
+      routes: [{ path: '/', component: '@/pages/homePage' }],
     },
   ],
 });
